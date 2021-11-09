@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+login
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block body %}
+<div style="padding:1em;">
+  <h1>REGISTER / LOGIN</h1>
+  <div style="padding-top:0.5em;">
+    <h2>Sign Up</h2>
+    <form method="POST" action="/signup/">
+      {% csrf_token %}
+      <input name="username" type="text" placeholder="Username" />
+      <input name="email" type="email" placeholder="Enter Email" />
+      <input name="password" type="password" placeholder="Password" />
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  <div style="padding-top:1em;">
+    <h2>Log In</h2>
+    <form method="POST" action="/login/">
+      {% csrf_token %}
+      <input name="username" type="text" placeholder="Enter username" />
+      <input name="password" type="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

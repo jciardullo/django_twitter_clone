@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+home
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block body %}
+  <div style="margin-left:1em;margin-top:1em;;margin-bottom:1em;">
+    <h1>Hey there, {{ user.username }}!</h1>
+    <div style="margin-left:1em;">
+      <div style="margin-top:2em;">
+        <form method="POST" action="/">
+          {% csrf_token %}
+          <h3>Make a Tweet!</h3>
+          <input name="body" placeholder="what's on your mind?" />
+          <input type="submit" value="post" />
+        </form>
+      </div>
+      <div class="tweet" style="margin-top:1em;margin-bottom:2em;">
+        {% block content %}
+        {% endblock %}
+      </div>
+      {% if user.username %}
+        <a href="/logout"><button>Logout</button></a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
